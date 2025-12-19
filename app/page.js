@@ -1,16 +1,20 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { headers } from "next/headers";
+export const dynamic = "force-dynamic";
 
 export default function LoginPage() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const router = useRouter()
+  const router = useRouter();
+  const headersList = headers();
+  const host = headersList.get("host");
 
   async function handleLogin(e) {
     e.preventDefault()
 
-    const res = await fetch('/api/login', {
+    const res = await fetch(`http://${host}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),

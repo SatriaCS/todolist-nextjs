@@ -2,22 +2,26 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { headers } from "next/headers";
+export const dynamic = "force-dynamic"
 
 export default function AddTodo(){
     const [name,setName] = useState();
     const [loading,setLoading] = useState(false);
     const route = useRouter();
+    const headersList = headers();
+    const host = headersList.get("host");
 
     async function HandleAdd(e){
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
         
         if (name == '') {
             setLoading(false)
             return alert('name todo kosong');
         }
 
-        await fetch('/api/todo',{
+        await fetch(`http://${host}/api/todo`,{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
