@@ -2,14 +2,12 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { headers } from "next/headers";
 export const dynamic = "force-dynamic";
-
 export default function ListTodo({todos}){
     const route = useRouter();
 
     async function DeleteTodo(id) {
-        await fetch(`http://${host}/api/todo/${id}`,{
+        await fetch(`/api/todo/${id}`,{
                         method: "DELETE",
                     });
         route.refresh();
@@ -17,7 +15,7 @@ export default function ListTodo({todos}){
 
     async function UpdateTodo(id){
         const name = prompt("Masukkan nama:");
-        await fetch(`http://${host}/api/todo/${id}`,{
+        await fetch(`/api/todo/${id}`,{
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'

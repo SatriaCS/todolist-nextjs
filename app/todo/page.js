@@ -1,13 +1,9 @@
 import AddTodo from "../component/AddTodo";
 import ListTodo from "../component/ListTodo";
 import ButtonLogout from "../component/ButtonLogout";
-import { headers } from "next/headers";
 export const dynamic = "force-dynamic";
-
 async function GetTodo(){
-  const headersList = headers();
-  const host = headersList.get("host");
-  const res = await fetch(`http://${host}/api/todo`);
+  const res = await fetch('/api/todo');
   const data = res.json();
 
   return data;
