@@ -17,7 +17,7 @@ export default function AddTodo(){
             return alert('name todo kosong');
         }
 
-        await fetch('http://localhost:3000/api/todo',{
+        await fetch('/api/todo',{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'

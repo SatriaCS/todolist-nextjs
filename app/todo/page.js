@@ -3,7 +3,7 @@ import ListTodo from "../component/ListTodo";
 import ButtonLogout from "../component/ButtonLogout";
 
 async function GetTodo(){
-  const res = await fetch('http://localhost:3000/api/todo');
+  const res = await fetch('/api/todo');
   const data = res.json();
 
   return data;

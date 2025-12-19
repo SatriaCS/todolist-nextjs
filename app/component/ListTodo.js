@@ -7,7 +7,7 @@ export default function ListTodo({todos}){
     const route = useRouter();
 
     async function DeleteTodo(id) {
-        await fetch(`http://localhost:3000/api/todo/${id}`,{
+        await fetch(`/api/todo/${id}`,{
                         method: "DELETE",
                     });
         route.refresh();
@@ -15,7 +15,7 @@ export default function ListTodo({todos}){
 
     async function UpdateTodo(id){
         const name = prompt("Masukkan nama:");
-        await fetch(`http://localhost:3000/api/todo/${id}`,{
+        await fetch(`/api/todo/${id}`,{
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
