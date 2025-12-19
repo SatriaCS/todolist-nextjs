@@ -2,9 +2,10 @@ import AddTodo from "../component/AddTodo";
 import ListTodo from "../component/ListTodo";
 import ButtonLogout from "../component/ButtonLogout";
 export const dynamic = "force-dynamic";
+
 async function GetTodo(){
   const res = await fetch('/api/todo');
-  const data = res.json();
+  const data = await res.json();
 
   return data;
 }
