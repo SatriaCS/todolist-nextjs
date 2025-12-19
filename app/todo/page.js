@@ -4,7 +4,7 @@ import ButtonLogout from "../component/ButtonLogout";
 export const dynamic = "force-dynamic";
 
 async function GetTodo(){
-  const res = await fetch('/api/todo');
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_API}/api/todo`);
   const data = await res.json();
 
   return data;
